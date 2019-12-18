@@ -1,11 +1,22 @@
-import React from 'react';
+import React from "react";
+import { Router, Route } from "react-router-dom";
+import history from "./history";
+import UserProvider from "./contexts/UserProvider";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import MenuBar from "./components/menus/MenuBar";
+import "./style/index.css";
 
 const App = () => {
-    return (
-        <div>
-            Passport Starter!! Follow the Youtube series to get started
-        </div>
-    );
+  return (
+    <Router history={history}>
+      <UserProvider>
+        <Route path="/" component={MenuBar} />
+        <Route path="/profile" component={Profile} />
+      </UserProvider>
+      <Route path="/" component={Home} />
+    </Router>
+  );
 };
 
 export default App;
